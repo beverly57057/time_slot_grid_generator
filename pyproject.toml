@@ -1,6 +1,6 @@
 [project]
 name = "time-slot-grid-generator"
-version = "0.1.0"
+version = "0.1.1"
 description = "Creates fixed-interval datetime slots between two bounds, omitting blackout ranges."
 requires-python = ">=3.10"
 dependencies = []
