@@ -38,3 +38,10 @@ Scheduling code often needs a clean list of candidate start times, but real cale
 ## Edge cases
 
 All datetimes are timezone-aware. Passing a naive datetime raises `ValueError`; the library will not guess a timezone. The last slot may end exactly at `end`, but a partial trailing interval is dropped. Blackouts that overlap each other are merged, and adjacent blackouts are not merged, so a slot starting exactly at the end of one blackout and the start of the next is still generated.
+
+## Design notes
+
+The window stores values eagerly rather than keeping running aggregates. Running
+sums drift with floating point over long streams, and recomputing from a small
+buffer is cheap enough that the drift is not worth the speed.
+
